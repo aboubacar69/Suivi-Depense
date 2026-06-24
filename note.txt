@@ -23,7 +23,7 @@ hint: the same ref. If you want to integrate the remote changes, use
 hint: 'git pull' before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details. 
 
-ces erreurs signifient simplement que le depôt distant sur Githab
+ces erreurs signifient simplement que le depôt distant sur Github
 contient des fichiers que tu n'as pas encore localement !
 En effet j'avais en amont le fichier README.md
 
