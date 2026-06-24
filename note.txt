@@ -1,0 +1,43 @@
+Pusher un projet existant vers un compte Github
+
+1. génération d'une clé publique ssh 
+ssh-keygen -t ed25519 -C "ton_email_github@example.com" -f ~/.ssh/id_github
+
+2. affichage de la clé
+
+cat ~/.ssh/id_github.pub
+Sélectionne tout le texte,
+Depuis le mot ssh-ed25519 au tout début jusqu'à ton adresse email à la toute fin
+
+3. ajoutons la sur github / gitlab
+Dans paramètres de clés ssh
+Supprime l'ancienne clé s'elle existe
+Clique sur ajouter une nouvelle clé SSH
+Colle le texte dans le champ clé
+
+4. git push -u origin main (Erreurs potentielles)
+
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details. 
+
+ces erreurs signifient simplement que le depôt distant sur Githab
+contient des fichiers que tu n'as pas encore localement !
+En effet j'avais en amont le fichier README.md
+
+Solution : Il faut d'abord récuperer ces fichiers, les fusionner avec le projet local
+
+git pull origin main --allow-unrelated-histories
+
+Si un éditeur de texte (comme Vim ou Nano) s'ouvre dans ton terminal
+message du genre "Merge branch 'main'...
+
+* Si c'est Vim : tape :wq puis appuie sur Entrée pour sauvegarder et quitter
+* Si c'est Nano : fais Ctrl+O, Entrée, puis Ctrl+X
+
+S'il y a un conflit (très rare à cette étape):
+ouvre ce fichier, choisis la version que tu veux garder, sauvegarde, fais git add . et git commit -m "Fix merge conflict".
+
+5. Réexecution de la commande 'git push -u origin main'
