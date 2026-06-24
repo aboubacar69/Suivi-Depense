@@ -1,6 +1,6 @@
 # Suivi-Depense
 
-Voici comment manipuler notre application 
+## Voici comment manipuler notre application 
 $ python main.py add --description "Lunch" --amount 20
 Expense added successfully (ID: 1)
 
